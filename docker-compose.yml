@@ -1,0 +1,29 @@
+version: '2'
+
+services:
+  mysql-master:
+    image: 'mysql:latest'
+    ports:
+      - 3306:3306
+    networks:
+      - cdnet
+    volumes:
+      - /Users/linhthai/work/mysql/data:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=ADM!Nm0m0
+      - MYSQL_USER=facebook
+      - MYSQL_PASSWORD=Fac5b00k
+      - MYSQL_DATABASE=controller
+
+  controller:
+    image: "django:16.3.1.11.3.0"
+    ports:
+      - 8000:8000
+    networks:
+      - cdnet
+    volumes: 
+      - /Users/linhthai/work/devops/controller:/opt/source
+
+networks:
+  cdnet:
+    driver: bridge

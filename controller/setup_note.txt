@@ -1,0 +1,12 @@
+# set-up note
+
+# setup env
+python -m venv controller
+
+# install requirement
+pip install -r vm/deployment/requirements.txt
+
+# migrate data
+python manage.py makemigrations
+python manage.py migrate
+python manage.py loaddata fixtures/initial_instance_types.json

@@ -1,0 +1,33 @@
+FROM ubuntu:16.04
+
+MAINTAINER linhthai
+
+RUN apt-get update
+RUN apt-get install -y wget
+RUN apt-get install -y build-essential libssl-dev libffi-dev tk-dev
+RUN wget https://www.python.org/ftp/python/3.6.2/Python-3.6.2.tgz
+RUN tar xzf Python-3.6.2.tgz
+WORKDIR Python-3.6.2
+RUN ./configure
+RUN make altinstall
+RUN cd /usr/local/bin \
+	&& ln -s idle3.6 idle \
+	&& ln -s pydoc3.6 pydoc \
+	&& ln -s python3.6 python \
+	&& ln -s python3.6m-config python-config \
+	&& ln -s pip3.6 pip \
+	&& ln -s easy_install-3.6 easy_install
+
+RUN rm -rf /opt/Python-*
+
+RUN apt-get install -y python3-dev libmysqlclient-dev
+
+WORKDIR /opt
+RUN mkdir resources
+WORKDIR resources
+RUN python -m venv controller
+#RUN apt-get install net-tools
+RUN rm -rf /var/lib/apt/lists/*
+
+#docker run --name demo -v /Users/linhthai/work/devops/controller:/opt/resources/controller -dt django:16.3.1.11.3.0
+#rm -rf /var/lib/apt/lists/*

@@ -1,0 +1,34 @@
+[
+    {
+        "model": "vm.InstanceTypes",
+        "fields": {
+            "type_instances": "VM",
+            "created_date": "2017-08-01T12:00:00+00:00",
+            "modified_date": "2017-08-01T12:00:00+00:00"
+        }
+    },
+    {
+        "model": "vm.InstanceTypes",
+        "fields": {
+            "type_instances": "EC2",
+            "created_date": "2017-08-01T12:00:00+00:00",
+            "modified_date": "2017-08-01T12:00:00+00:00"
+        }
+    },
+    {
+        "model": "vm.InstanceTypes",
+        "fields": {
+            "type_instances": "GCL",
+            "created_date": "2017-08-01T12:00:00+00:00",
+            "modified_date": "2017-08-01T12:00:00+00:00"
+        }
+    },
+    {
+        "model": "vm.InstanceTypes",
+        "fields": {
+            "type_instances": "AZURE",
+            "created_date": "2017-08-01T12:00:00+00:00",
+            "modified_date": "2017-08-01T12:00:00+00:00"
+        }
+    }
+]
