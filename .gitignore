@@ -4,6 +4,10 @@ nbproject/**
 log/**
 **/*~
 __pycache__
+controller/lib/*
+controller/lib64
+controller/app
+controller/bin
 
 # IDE #
 ###################
