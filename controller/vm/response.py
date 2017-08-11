@@ -9,7 +9,7 @@ from rest_framework.response import Response
 
 
 @renderer_classes((JSONRenderer,))
-def response_data(data=""):
+def response_data_with_page(data=""):
     status_code = status.HTTP_200_OK
     result = {
         'status': status_code,

@@ -29,5 +29,5 @@ RUN python -m venv controller
 #RUN apt-get install net-tools
 RUN rm -rf /var/lib/apt/lists/*
 
-#docker run --name demo -v /Users/linhthai/work/devops/controller:/opt/resources/controller -dt django:16.3.1.11.3.0
+#docker run --name -p 8000:8000 demo -v /Users/linhthai/work/controller:/opt/resources/controller -dt django:16.3.1.11.3.0
 #rm -rf /var/lib/apt/lists/*
