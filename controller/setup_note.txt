@@ -2,6 +2,10 @@
 
 # setup env
 python -m venv controller
+cd controller
+
+# activate env
+source bin/activate
 
 # install requirement
 pip install -r vm/deployment/requirements.txt

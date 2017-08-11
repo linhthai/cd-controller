@@ -15,10 +15,10 @@ class instancetypes_get(APIView):
     serializer_class = InstanceTypeList
 
     def get(self, request):
-        # for key in request.GET:
-        #     print(key)
-        #     value = request.GET[key]
-        #     print(value)
+        for key in request.GET:
+            print(key)
+            value = request.GET[key]
+            print(value)
         try:
             page =request.GET.get('page')
         except Exception as ex:
@@ -79,7 +79,7 @@ class instancetypes_create(BaseView):
                 itf_driver = InstanceTypesFunction()
                 create_obj = itf_driver.create(**param)
                 if create_obj:
-                    serializer = InstanceTypeList(update_obj)
+                    serializer = InstanceTypeList(create_obj)
                     return response_data_with_page(serializer.data)
                 return response_message("Success")
         except Exception as ex:

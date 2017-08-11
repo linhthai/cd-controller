@@ -8,10 +8,8 @@ class InstanceTypesFunction:
     def create(self, **kwargs):
         try:
             ins_type_object, create = InstanceTypes.objects.get_or_create(type_instances=kwargs['type_instances'])
-            if not ins_type_object:
-                ins_type_object.type_instances = kwargs['type_instances']
+            if  ins_type_object and create is True:
                 ins_type_object.type_instances_name = kwargs['type_instances_name']
-                ins_type_object.created_date = datetime.date.today()
                 ins_type_object.save()
             return ins_type_object
         except Exception as ex:
