@@ -4,29 +4,23 @@ from rest_framework import pagination
 from django.db.models.query import QuerySet
 
 from vm.v1.serializers.base import BaseListSerializer
-from vm.v1.models.InstanceTypes import InstanceTypes
+from vm.v1.models.Instance import Instance
 
 
-class InstanceTypeList(serializers.ModelSerializer):
+class InstanceList(serializers.ModelSerializer):
     # type_instances = serializers.CharField(source='get_type_instances_display')
     created_date = serializers.DateTimeField(format="%d-%m-%Y %H:%M:%S")
     modified_date = serializers.DateTimeField(format="%d-%m-%Y %H:%M:%S")
 
     class Meta:
-        model = InstanceTypes
-        fields = ('id', 'type_instances', 'type_instances_name' , 'created_date', 'modified_date', 'is_active')
+        model = Instance
+        fields = ('id', 'instance_name', 'ip_address','instance_type', 'status','description', 'created_date', 'modified_date', 'is_active')
 
 
-class InstanceTypeWithName(serializers.ModelSerializer):
-    class Meta:
-        model = InstanceTypes
-        fields = ('id', 'type_instances_name')
-
-
-def custom_serialize_instancetype(obj_list):
+def custom_serialize_instance(obj_list):
     output = None
     try:
-        if isinstance(obj_list, InstanceTypes) is True:
+        if isinstance(obj_list, Instance) is True:
             output = obj_list.to_dict()
         elif isinstance(obj_list, QuerySet):
             output = []

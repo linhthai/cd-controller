@@ -7,7 +7,7 @@ from vm.exceptions import V1Exception
 
 from vm.v1.views import BaseView
 from vm.v1.modules.instance_types import InstanceTypesFunction
-from vm.v1.serializers.instance_types import InstanceTypeList, custom_serialize_instancetype, InstanceTypes 
+from vm.v1.serializers.instance_types import InstanceTypeList, custom_serialize_instancetype, InstanceTypeWithName
 # from vm.v1.models import InstanceTypes
 from vm.v1.paging.instance_types import CustomInstanceTypesPaginator as Paging
 
@@ -38,6 +38,21 @@ class instancetypes_get(APIView):
             print(ex)
             raise V1Exception("Error")
 
+
+class instancetypes_get_all_name(APIView):
+    def get(self, request):
+        try:
+            itf_driver = InstanceTypesFunction()
+            data = itf_driver.get_all()
+            if not data:
+                return response_message("Data is empty !!!")
+            serializer = InstanceTypeWithName(data, many=True)
+            return response_data_with_page(serializer.data)
+        except Exception as ex:
+            print(ex)
+            raise V1Exception("Error")
+
+
 class instancetypes_update(BaseView):
     serializer_class = InstanceTypeList
 
@@ -62,6 +77,7 @@ class instancetypes_update(BaseView):
         except Exception as ex:
             print(ex)
             raise V1Exception("Error")
+
 
 class instancetypes_create(BaseView):
     serializer_class = InstanceTypeList

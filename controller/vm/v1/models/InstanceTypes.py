@@ -24,6 +24,9 @@ class InstanceTypes(BaseModel):
     type_instances = models.CharField(max_length=16, null=True)
     type_instances_name = models.CharField(max_length=128, null=True)
 
+    class Meta:
+        index_together = ['type_instances','is_active']
+
     def to_dict(self):
         return {
             'id' : self.id,
