@@ -1,6 +1,7 @@
 from django.db import models
 from .InstanceTypes import InstanceTypes
 
+
 class BaseModel(models.Model):
     created_date = models.DateTimeField(auto_now_add=True)
     modified_date = models.DateTimeField(auto_now=True)
@@ -32,15 +33,20 @@ class Instance(BaseModel):
     def __str__(self):
         return self.instance_name
 
+    def format_date(self, obj):
+        return '{:%Y-%m-%d %H:%M:%S}'.format(obj)
+
     def to_dict(self):
         return {
             'id' : self.id,
             'instance_name' :   self.instance_name,
             'ip_address' :      self.ip_address,
             'description' :     self.description,
-            'instance_type' :   self.instance_type,
-            'status':           self.status,
-            'created_date' :    self.created_date,
-            'modified_date' :   self.modified_date,
+            'instance_type' :   {   'id': self.instance_type.id,
+                                    'type_instances_name': self.instance_type.type_instances_name,
+                                },
+            'status':           self.get_status_display(),
+            'created_date' :    self.format_date(self.created_date),
+            'modified_date' :   self.format_date(self.modified_date),
             'is_active' :       self.is_active,
         }

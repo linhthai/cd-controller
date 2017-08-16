@@ -4,6 +4,7 @@ from rest_framework import pagination
 from django.db.models.query import QuerySet
 
 from vm.v1.serializers.base import BaseListSerializer
+from vm.v1.serializers.instance_types import InstanceTypeWithName
 from vm.v1.models.Instance import Instance
 
 
@@ -16,13 +17,16 @@ class InstanceList(serializers.ModelSerializer):
         model = Instance
         fields = ('id', 'instance_name', 'ip_address','instance_type', 'status','description', 'created_date', 'modified_date', 'is_active')
 
+    def to_representation(self, obj):
+        return 
 
 def custom_serialize_instance(obj_list):
     output = None
     try:
         if isinstance(obj_list, Instance) is True:
             output = obj_list.to_dict()
-        elif isinstance(obj_list, QuerySet):
+        # elif isinstance(obj_list, QuerySet):
+        else:
             output = []
             for e in obj_list:
                 output.append(e.to_dict())
