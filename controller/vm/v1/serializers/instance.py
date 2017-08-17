@@ -17,8 +17,8 @@ class InstanceList(serializers.ModelSerializer):
         model = Instance
         fields = ('id', 'instance_name', 'ip_address','instance_type', 'status','description', 'created_date', 'modified_date', 'is_active')
 
-    def to_representation(self, obj):
-        return 
+    # def to_representation(self, obj):
+    #     return 
 
 def custom_serialize_instance(obj_list):
     output = None

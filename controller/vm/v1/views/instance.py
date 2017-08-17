@@ -57,18 +57,27 @@ class instance_create(BaseView):
 class instance_update(BaseView):
     def post(self, request):
         try:
+            for key in request.POST:
+                print(key)
+                value = request.POST[key]
+                print(value)
             param = {
                 'id':                   request.POST.get('id'),
                 'instance_name':        request.POST.get('instance_name'),
                 'instance_type':        request.POST.get('instance_type'),
                 'ip_address':           request.POST.get('ip_address'),
                 'description':          request.POST.get('description'),
-                'status':               request.POST.get('status'),
                 'created_date':         request.POST.get('created_date'),
                 'modified_date':        request.POST.get('modified_date'),
                 'is_active':            request.POST.get('is_active'),
             }
-            print(Instance.INSTANCE_STATUS[param['status']])
+            print(param)
+            if param['id']:
+                insf_driver = InstanceFunction()
+                update_obj = insf_driver.update(**param)
+                if update_obj:
+                    serializer = custom_serialize_instance(update_obj)
+                    return response_data_with_page(serializer)
             raise V1Exception("Error update instance")
         except Exception as ex:
             print(ex)
