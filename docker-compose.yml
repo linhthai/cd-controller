@@ -8,7 +8,7 @@ services:
     networks:
       - cdnet
     volumes:
-      - /Users/linhthai/work/mysql/data:/var/lib/mysql
+      - D:\DevOps\data:/var/lib/mysql
     environment:
       - MYSQL_ROOT_PASSWORD=ADM!Nm0m0
       - MYSQL_USER=facebook
@@ -22,7 +22,7 @@ services:
     networks:
       - cdnet
     volumes: 
-      - /Users/linhthai/work/devops/controller:/opt/source
+      - D:\DevOps\cd-controller:/opt/source
 
 networks:
   cdnet:

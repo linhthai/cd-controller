@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'corsheaders',
     'vm',
+    'scm',
     # 'app',
 ]
 
@@ -95,7 +96,7 @@ DATABASES = {
         'NAME':   'controller',
         'USER': 'root',
         'PASSWORD': 'ADM!Nm0m0',
-        'HOST': 'controller_mysql-master_1',
+        'HOST': 'cdcontroller_mysql-master_1',
         'PORT': '3306',
         'default-character-set': 'utf8',
         'OPTIONS': {
@@ -142,3 +143,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
 STATIC_URL = '/static/'
+
+# Bitbucket Infomations Default
+BITBUCKET_URL   = 'https://api.bitbucket.org'
+BITBUCKET_VER   = '2.0'
+BITBUCKET_TEAM  = 'dzonesvn'
+BITBUCKET_USER  = 'duclinh@dzones.vn'
+BITBUCKET_PA    = 'Dev0ps,.'

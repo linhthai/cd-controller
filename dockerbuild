@@ -20,14 +20,14 @@ RUN cd /usr/local/bin \
 
 RUN rm -rf /opt/Python-*
 
-RUN apt-get install -y python3-dev libmysqlclient-dev
+RUN apt-get install -y python3-dev libmysqlclient-dev iputils-ping
 
 WORKDIR /opt
 RUN mkdir resources
 WORKDIR resources
 RUN python -m venv controller
-#RUN apt-get install net-tools
+#RUN apt-get install net-tools 
 RUN rm -rf /var/lib/apt/lists/*
 
-#docker run --name -p 8000:8000 demo -v /Users/linhthai/work/controller:/opt/resources/controller -dt django:16.3.1.11.3.0
+#docker run --name demo -p 8000:8000  -v D:\DevOps\cd-controller:/opt/resources/controller -dt django:16.3.1.11.3.0
 #rm -rf /var/lib/apt/lists/*
